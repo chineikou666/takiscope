@@ -65,20 +65,43 @@ export function WorkDetailClient({
               referrerPolicy="strict-origin-when-cross-origin"
             />
           ) : isVideo && !hasVideo ? (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-develop-gray/60 light:bg-museum-shadow/40">
-              <p className="font-mono text-xs tracking-[0.15em] text-silver-dim/60 light:text-museum-ink-dim/60">
-                {isJa ? '映像作品（オンライン視聴不可）' : 'Video work (not available online)'}
-              </p>
-              <a
-                href={`https://www.youtube.com/results?search_query=${encodeURIComponent('Kentaro Taki ' + (isJa ? work.titleJa : work.titleEn))}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.1em] text-silver-dim hover:text-silver-white light:text-museum-ink-dim light:hover:text-museum-ink transition-colors duration-300 border border-silver-dim/25 light:border-museum-ink-dim/20 px-3 py-1.5 hover:border-silver-dim/40 light:hover:border-museum-ink-dim/35"
-              >
-                <span>{isJa ? 'YouTubeで検索' : 'Search on YouTube'}</span>
-                <span className="text-[10px]">↗</span>
-              </a>
-            </div>
+            <a
+              href={`https://www.youtube.com/results?search_query=${encodeURIComponent('Kentaro Taki ' + (isJa ? work.titleJa : work.titleEn))}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute inset-0 flex flex-col items-center justify-center gap-5 group cursor-pointer"
+            >
+              {/* Background image + dark overlay */}
+              {heroImage ? (
+                <>
+                  <Image
+                    src={heroImage}
+                    alt=""
+                    fill
+                    className="object-cover brightness-[0.25] group-hover:brightness-[0.3] transition-all duration-700"
+                    sizes="(min-width: 1024px) 1024px, 100vw"
+                  />
+                  <div className="absolute inset-0 bg-darkroom-black/50 group-hover:bg-darkroom-black/40 transition-colors duration-700" />
+                </>
+              ) : (
+                <div
+                  className="absolute inset-0"
+                  style={{ background: work.color || '#1a1a1a' }}
+                />
+              )}
+
+              {/* Play button circle */}
+              <span className="relative z-10 flex items-center justify-center w-16 h-16 rounded-full border-2 border-silver-white/30 group-hover:border-silver-white/50 group-hover:scale-105 transition-all duration-500">
+                <svg width="22" height="26" viewBox="0 0 22 26" fill="none" className="ml-1">
+                  <path d="M0 0v26l22-13z" fill="currentColor" className="text-silver-white/70 group-hover:text-silver-white transition-colors duration-500" />
+                </svg>
+              </span>
+
+              {/* Label */}
+              <span className="relative z-10 font-mono text-xs tracking-[0.15em] text-silver-dim/60 group-hover:text-silver-dim/80 light:text-museum-ink-dim/50 light:group-hover:text-museum-ink-dim/70 transition-colors duration-500">
+                {isJa ? 'YouTube で検索' : 'Search on YouTube'}
+              </span>
+            </a>
           ) : heroImage ? (
             <button
               type="button"

@@ -11,6 +11,7 @@ import { SlideDots } from './SlideDots';
 const CATEGORY_COUNT = 4;
 const SLIDE_DURATION_MS = 6000;
 const SCROLL_COOLDOWN_MS = 300;
+const SWIPE_THRESHOLD_PX = 50;
 
 function useEntrance() {
   const [phase, setPhase] = useState<'intro' | 'reveal' | 'playing'>(() =>
@@ -50,6 +51,7 @@ export function Hero() {
     });
 
   const lastScrollTime = useRef(0);
+  const touchStartY = useRef(0);
 
   const handleWheel = useCallback(
     (e: WheelEvent) => {
@@ -84,14 +86,40 @@ export function Hero() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
 
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (e: TouchEvent) => {
+      const deltaY = touchStartY.current - e.changedTouches[0].clientY;
+      if (Math.abs(deltaY) < SWIPE_THRESHOLD_PX) return;
+      const now = performance.now();
+      if (now - lastScrollTime.current < SCROLL_COOLDOWN_MS) return;
+      lastScrollTime.current = now;
+      if (deltaY > 0) {
+        goNext();
+      } else {
+        goPrev();
+      }
+    },
+    [goNext, goPrev],
+  );
+
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
     el.addEventListener('wheel', handleWheel, { passive: true });
-    return () => el.removeEventListener('wheel', handleWheel);
-  }, [handleWheel]);
+    el.addEventListener('touchstart', handleTouchStart, { passive: true });
+    el.addEventListener('touchend', handleTouchEnd, { passive: true });
+    return () => {
+      el.removeEventListener('wheel', handleWheel);
+      el.removeEventListener('touchstart', handleTouchStart);
+      el.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [handleWheel, handleTouchStart, handleTouchEnd]);
 
   return (
     <section

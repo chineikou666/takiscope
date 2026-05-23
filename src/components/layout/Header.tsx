@@ -610,8 +610,7 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.3, 0, 0.15, 1] }}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-start gap-5 overflow-y-auto bg-darkroom-black/98 light:bg-museum-white/98 pb-16"
-            style={{ paddingTop: 'calc(96px + env(safe-area-inset-top, 0px))' }}
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 overflow-y-auto bg-darkroom-black/98 light:bg-museum-white/98 pb-16"
             onClick={(e) => { if (e.target === e.currentTarget) { setMenuOpen(false); setMobileExpanded(null); } }}
           >
             <button
