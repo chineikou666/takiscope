@@ -124,16 +124,18 @@ function ContactClient() {
                   <motion.div variants={formItem} transition={{ duration: 0.7, ease: [0.3, 0, 0.15, 1] }} className="flex justify-end pt-1">
                     <button
                       type="submit"
-                      className="group/btn relative inline-flex items-center gap-4 px-8 py-3.5 border border-silver-dim/25 light:border-museum-ink-dim/25 bg-silver-dim/[0.02] light:bg-museum-ink-dim/[0.02] hover:bg-silver-dim/[0.06] light:hover:bg-museum-ink-dim/[0.05] hover:border-silver-dim/40 light:hover:border-museum-ink-dim/40 font-mono text-sm tracking-[0.2em] text-silver-dim hover:text-silver-white light:text-museum-ink-dim light:hover:text-museum-ink transition-all duration-300"
+                      className="group/btn inline-flex items-center gap-3 px-6 py-3 border border-silver-dim/35 light:border-museum-ink-dim/45 bg-transparent hover:border-silver-dim/50 light:hover:border-museum-ink-dim/60 font-mono text-sm tracking-[0.15em] text-silver-dim hover:text-silver-white light:text-museum-ink light:hover:text-museum-ink transition-all duration-300"
                     >
-                      {/* Corner accents */}
-                      <span className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-silver-dim/20 light:border-museum-ink-dim/20 group-hover/btn:border-silver-dim/35 light:group-hover/btn:border-museum-ink-dim/35 transition-colors duration-300" />
-                      <span className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-silver-dim/20 light:border-museum-ink-dim/20 group-hover/btn:border-silver-dim/35 light:group-hover/btn:border-museum-ink-dim/35 transition-colors duration-300" />
-                      <span className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-silver-dim/20 light:border-museum-ink-dim/20 group-hover/btn:border-silver-dim/35 light:group-hover/btn:border-museum-ink-dim/35 transition-colors duration-300" />
-                      <span className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-silver-dim/20 light:border-museum-ink-dim/20 group-hover/btn:border-silver-dim/35 light:group-hover/btn:border-museum-ink-dim/35 transition-colors duration-300" />
-
-                      <span className="leading-none">{t.send}</span>
-                      <span className="leading-none text-silver-dim/40 light:text-museum-ink-dim/40 group-hover/btn:text-silver-dim/60 light:group-hover/btn:text-museum-ink-dim/60 group-hover/btn:translate-x-1 transition-all duration-300">→</span>
+                      <span>{t.send}</span>
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        className="text-silver-dim/50 light:text-museum-ink-dim/50 group-hover/btn:text-silver-dim light:group-hover/btn:text-museum-ink-dim group-hover/btn:translate-x-0.5 transition-all duration-300"
+                      >
+                        <path d="M2.5 6h7M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" strokeLinejoin="round" />
+                      </svg>
                     </button>
                   </motion.div>
                 </motion.form>
