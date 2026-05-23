@@ -640,7 +640,7 @@ export function Header() {
                     transition={{ delay: i * 0.08, duration: 0.5, ease: [0.3, 0, 0.15, 1] }}
                     className="flex flex-col items-center"
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="relative flex items-center">
                       <Link
                         href={href}
                         onClick={() => { setMenuOpen(false); setMobileExpanded(null); }}
@@ -650,7 +650,7 @@ export function Header() {
                       </Link>
                       <button
                         onClick={() => setMobileExpanded(expanded ? null : item.key as 'works' | 'texts' | 'news')}
-                        className="flex items-center justify-center w-7 h-7 rounded-full border border-silver-dim/20 light:border-museum-ink-dim/20 text-silver-dim light:text-museum-ink-dim hover:text-silver-white light:hover:text-museum-ink hover:border-silver-dim/40 light:hover:border-museum-ink-dim/40 transition-colors duration-200"
+                        className="absolute -right-9 flex items-center justify-center w-7 h-7 rounded-full border border-silver-dim/20 light:border-museum-ink-dim/20 text-silver-dim light:text-museum-ink-dim hover:text-silver-white light:hover:text-museum-ink hover:border-silver-dim/40 light:hover:border-museum-ink-dim/40 transition-colors duration-200"
                         aria-label={expanded ? 'Close filters' : 'Open filters'}
                       >
                         <span className="font-mono text-sm leading-none">
