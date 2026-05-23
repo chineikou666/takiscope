@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
 import { Noto_Sans_JP } from 'next/font/google';
@@ -86,7 +87,9 @@ export default async function RootLayout({
             <CustomCursor />
             <BackToTop />
             <div className="relative flex min-h-screen flex-col">
-              <Header />
+              <Suspense fallback={null}>
+                <Header />
+              </Suspense>
               <main className="flex-1">
                 <PageTransition>{children}</PageTransition>
               </main>
