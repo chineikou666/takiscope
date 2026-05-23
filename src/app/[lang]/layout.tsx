@@ -72,7 +72,6 @@ export default async function RootLayout({
     <html
       lang={lang}
       className={`${notoSansJP.variable} ${inter.variable} ${jetbrainsMono.variable}`}
-      style={{ paddingTop: 'env(safe-area-inset-top, 0px)' } as React.CSSProperties}
       suppressHydrationWarning
     >
       <head>

@@ -251,10 +251,11 @@ export function Header() {
     'light:text-museum-ink-dim/80 px-3 mb-2 pb-2 border-b border-silver-dim/10 light:border-museum-ink-dim/8';
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 bg-darkroom-black/80 backdrop-blur-sm border-b border-silver-dim/12 light:bg-museum-white/90 light:border-museum-ink-dim/12"
-      style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
-    >
+    <>
+      <header
+        className="fixed top-0 left-0 right-0 z-50 bg-darkroom-black/80 backdrop-blur-sm border-b border-silver-dim/12 light:bg-museum-white/90 light:border-museum-ink-dim/12"
+        style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
+      >
       <div className="flex items-center justify-between px-[3vw] py-4">
         {/* Logo */}
         <Link href={`/${lang}`} className="group shrink-0">
@@ -602,7 +603,9 @@ export function Header() {
         )}
       </AnimatePresence>
 
-      {/* Mobile menu */}
+    </header>
+
+      {/* Mobile menu — outside header to avoid backdrop-filter containing-block trap */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -822,7 +825,7 @@ export function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
 
