@@ -1,26 +1,121 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@variant light (&:is(.light *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-darkroom-black: #080809;
+  --color-develop-gray: #111114;
+  --color-warm-paper: #1c1c20;
+  --color-silver-white: #ffffff;
+  --color-silver-mid: #ffffff;
+  --color-silver-dim: #ffffff;
+  --color-safe-red: #8b2020;
+  --color-cool-blue: #506070;
+
+  --color-museum-white: #f5f3f0;
+  --color-museum-paper: #ebe7e2;
+  --color-museum-shadow: #d8d4ce;
+  --color-museum-ink: #111110;
+  --color-museum-ink-mid: #111110;
+  --color-museum-ink-dim: #111110;
+
+  --font-sans: var(--font-sans-latin), 'Noto Sans JP', ui-sans-serif, system-ui;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --ease-optical: cubic-bezier(0.3, 0, 0.15, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    background: var(--color-darkroom-black);
+    color: var(--color-silver-white);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  html.light {
+    background: var(--color-museum-white);
+    color: var(--color-museum-ink);
+
+    --color-silver-white: var(--color-museum-ink);
+    --color-silver-mid: var(--color-museum-ink);
+    --color-silver-dim: var(--color-museum-ink);
+  }
+
+  html.light [data-hero] {
+    --color-silver-white: #ffffff;
+    --color-silver-mid: #ffffff;
+    --color-silver-dim: #ffffff;
+  }
+
+  html.light ::-webkit-scrollbar-thumb {
+    background: var(--color-museum-shadow);
+  }
+
+  ::selection {
+    background: rgba(228, 226, 222, 0.12);
+  }
+  html.light ::selection {
+    background: rgba(17, 17, 16, 0.06);
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-silver-dim);
+    border-radius: 0;
+  }
+  a { color: inherit; text-decoration: none; }
+  .preserve-3d { transform-style: preserve-3d; }
+  .backface-hidden { backface-visibility: hidden; }
+  .rotate-y-180 { transform: rotateY(180deg); }
+  .perspective-1200 { perspective: 1200px; }
+  .ruling-lines {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 23px,
+      var(--color-silver-dim) 23px,
+      var(--color-silver-dim) 24px
+    );
+    opacity: 0.04;
+  }
+  html.light .ruling-lines {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 23px,
+      var(--color-museum-ink-dim) 23px,
+      var(--color-museum-ink-dim) 24px
+    );
+    opacity: 0.06;
+  }
+  :focus-visible {
+    outline: 1px solid var(--color-silver-mid);
+    outline-offset: 3px;
+  }
+
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes kenburns {
+  0%   { transform: scale(1.05) translate(0%, 0%); }
+  33%  { transform: scale(1.08) translate(0.8%, 0.4%); }
+  66%  { transform: scale(1.12) translate(1.6%, 0.2%); }
+  100% { transform: scale(1.15) translate(1%, 0.8%); }
+}
+
+.animate-kenburns {
+  animation: kenburns var(--kb-duration, 7s) ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

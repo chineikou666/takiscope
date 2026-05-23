@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "works": "Works",
+    "texts": "Texts",
+    "items": "Items",
+    "about": "About",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "hero": {
+    "seeing": "Seeing",
+    "reading": "Reading",
+    "about": "About",
+    "previousSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "goToSlide": "Go to slide"
+  },
+  "works": {
+    "title": "Works",
+    "all": "All",
+    "filterByCluster": "Filter by concept",
+    "filterByMedium": "Filter by medium",
+    "filterByPeriod": "Filter by period",
+    "noResults": "No works found for this filter.",
+    "clusters": {
+      "Seeing & Surveillance": "Seeing & Surveillance",
+      "Optical Apparatus": "Optical Apparatus",
+      "Body & Double": "Body & Double",
+      "Urban Space & Ruins": "Urban Space & Ruins",
+      "Signal & Noise": "Signal & Noise",
+      "Archive": "Archive",
+      "Collaboration": "Collaboration"
+    },
+    "mediums": {
+      "Installation": "Installation",
+      "Video": "Video",
+      "Performance": "Performance",
+      "Exhibition": "Exhibition",
+      "Collage": "Collage",
+      "Interview": "Interview",
+      "Collaboration": "Collaboration"
+    }
+  },
+  "work": {
+    "year": "Year",
+    "medium": "Medium",
+    "duration": "Duration",
+    "dimensions": "Dimensions",
+    "relatedWorks": "Related Works",
+    "exhibitionHistory": "Exhibition History",
+    "relatedTexts": "Related Texts",
+    "relatedItems": "Related Items"
+  },
+  "about": {
+    "title": "About",
+    "bio": "Biography",
+    "cv": "Career",
+    "exhibitions": "Exhibition History",
+    "downloadCV": "Download CV",
+    "pdfLabel": "PDF",
+    "education": "Education",
+    "awards": "Awards",
+    "andMore": "and more",
+    "selectedExhibitions": "Selected Exhibitions"
+  },
+  "texts": {
+    "essays": "Essays",
+    "publications": "Publications",
+    "count": "texts",
+    "categories": {
+      "essay": "Essay",
+      "publication": "Publication"
+    },
+    "filterByCategory": "Category",
+    "filterByYear": "Year"
+  },
+  "news": {
+    "filterByYear": "Year"
+  },
+  "common": {
+    "back": "Back",
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "close": "Close",
+    "menu": "Menu",
+    "language": "Language",
+    "theme": "Theme",
+    "darkMode": "Dark",
+    "lightMode": "Light"
+  }
+}

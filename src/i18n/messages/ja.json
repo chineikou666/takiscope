@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "works": "作品",
+    "texts": "テキスト",
+    "items": "アイテム",
+    "about": "について",
+    "news": "ニュース",
+    "contact": "問い合せ"
+  },
+  "hero": {
+    "seeing": "見る",
+    "reading": "読む",
+    "about": "知る",
+    "previousSlide": "前のスライド",
+    "nextSlide": "次のスライド",
+    "goToSlide": "スライドに移動"
+  },
+  "works": {
+    "title": "作品",
+    "all": "すべて",
+    "filterByCluster": "コンセプトで絞り込む",
+    "filterByMedium": "メディアで絞り込む",
+    "filterByPeriod": "年代で絞り込む",
+    "noResults": "該当する作品がありません。",
+    "clusters": {
+      "Seeing & Surveillance": "監視と視線",
+      "Optical Apparatus": "光学装置",
+      "Body & Double": "身体と分身",
+      "Urban Space & Ruins": "都市空間と廃墟",
+      "Signal & Noise": "信号と雑音",
+      "Archive": "アーカイブ",
+      "Collaboration": "コラボレーション"
+    },
+    "mediums": {
+      "Installation": "インスタレーション",
+      "Video": "ビデオ",
+      "Performance": "パフォーマンス",
+      "Exhibition": "展示",
+      "Collage": "コラージュ",
+      "Interview": "インタビュー",
+      "Collaboration": "コラボレーション"
+    }
+  },
+  "work": {
+    "year": "制作年",
+    "medium": "メディア",
+    "duration": "時間",
+    "dimensions": "サイズ",
+    "relatedWorks": "関連作品",
+    "exhibitionHistory": "展示歴",
+    "relatedTexts": "関連テキスト",
+    "relatedItems": "関連アイテム"
+  },
+  "about": {
+    "title": "について",
+    "bio": "略歴",
+    "cv": "経歴",
+    "exhibitions": "展示歴",
+    "downloadCV": "CVをダウンロード",
+    "pdfLabel": "PDF",
+    "education": "学歴",
+    "awards": "受賞歴",
+    "andMore": "ほか多数",
+    "selectedExhibitions": "主な展示"
+  },
+  "texts": {
+    "essays": "エッセイ",
+    "publications": "出版物",
+    "count": "件",
+    "categories": {
+      "essay": "エッセイ",
+      "publication": "出版物"
+    },
+    "filterByCategory": "カテゴリ",
+    "filterByYear": "年"
+  },
+  "news": {
+    "filterByYear": "年"
+  },
+  "common": {
+    "back": "戻る",
+    "readMore": "続きを読む",
+    "viewAll": "すべて見る",
+    "close": "閉じる",
+    "menu": "メニュー",
+    "language": "言語",
+    "theme": "テーマ",
+    "darkMode": "ダーク",
+    "lightMode": "ライト"
+  }
+}

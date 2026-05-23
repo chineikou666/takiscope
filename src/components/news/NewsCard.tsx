@@ -1,0 +1,86 @@
+'use client';
+
+import Image from 'next/image';
+import type { MockNews } from '@/data/mock-news';
+
+interface NewsCardProps {
+  news: MockNews;
+  lang: 'ja' | 'en';
+  readLabel: string;
+}
+
+function formatDateShort(iso: string, lang: 'ja' | 'en'): string {
+  const d = new Date(iso);
+  if (lang === 'ja') {
+    return `${d.getMonth() + 1}/${d.getDate()}`;
+  }
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+function getThumbnail(news: MockNews): string | null {
+  if (news.image) return news.image;
+  if (!news.href) return null;
+  const yt = news.href.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+  if (yt) return `https://img.youtube.com/vi/${yt[1]}/hqdefault.jpg`;
+  const ytw = news.href.match(/youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/);
+  if (ytw) return `https://img.youtube.com/vi/${ytw[1]}/hqdefault.jpg`;
+  const vimeo = news.href.match(/vimeo\.com\/(\d+)/);
+  if (vimeo) return `https://vumbnail.com/${vimeo[1]}.jpg`;
+  return null;
+}
+
+export function NewsCard({ news, lang }: NewsCardProps) {
+  const title = lang === 'ja' ? news.titleJa : news.titleEn;
+  const excerpt = lang === 'ja' ? news.excerptJa : news.excerptEn;
+  const dateStr = formatDateShort(news.date, lang);
+  const thumbnail = getThumbnail(news);
+
+  const inner = (
+    <div className="group flex items-start gap-5 py-2.5 -ml-1 pl-5 rounded-sm transition-colors duration-300 hover:bg-silver-dim/[0.02] light:hover:bg-museum-ink-dim/[0.02]">
+      {/* Lead image — always reserve w-40 h-24 for alignment */}
+      <div className={`relative w-40 h-24 shrink-0 overflow-hidden ${thumbnail ? 'border border-silver-dim/12 light:border-museum-ink-dim/8' : ''}`}>
+        {thumbnail && (
+          <Image
+            src={thumbnail}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            sizes="160px"
+          />
+        )}
+      </div>
+
+      {/* Date */}
+      <span className="shrink-0 font-mono text-xs tracking-[0.1em] text-silver-dim/60 light:text-museum-ink-dim/60 mt-[1px] w-14 text-right">
+        {dateStr}
+      </span>
+
+      {/* Title + excerpt */}
+      <div className="min-w-0 flex-1">
+        <span className="font-sans text-sm tracking-[0.03em] leading-snug text-silver-white light:text-museum-ink group-hover:text-silver-mid light:group-hover:text-museum-ink-mid transition-colors duration-300">
+          {title}
+        </span>
+        {excerpt && (
+          <p className="mt-0.5 font-sans text-xs leading-relaxed text-silver-dim/70 light:text-museum-ink-dim/70 line-clamp-1">
+            {excerpt}
+          </p>
+        )}
+      </div>
+
+      {/* Arrow on hover */}
+      <span className="shrink-0 font-mono text-[10px] text-silver-dim/30 light:text-museum-ink-dim/30 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300 mt-[1px]">
+        →
+      </span>
+    </div>
+  );
+
+  if (news.href) {
+    return (
+      <a href={news.href} target="_blank" rel="noopener noreferrer" className="block">
+        {inner}
+      </a>
+    );
+  }
+
+  return <div className="block">{inner}</div>;
+}
