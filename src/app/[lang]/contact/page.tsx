@@ -127,7 +127,7 @@ function ContactClient() {
                       className="group/btn inline-flex items-center justify-center gap-3 px-6 py-3 border border-silver-dim/35 light:border-museum-ink-dim/45 bg-transparent hover:border-silver-dim/50 light:hover:border-museum-ink-dim/60 font-mono text-sm tracking-[0.15em] text-silver-dim hover:text-silver-white light:text-museum-ink light:hover:text-museum-ink transition-all duration-300"
                     >
                       <span className="leading-none">{t.send}</span>
-                      <span className="leading-none text-silver-dim/50 group-hover/btn:text-silver-dim group-hover/btn:translate-x-0.5 transition-all duration-300">→</span>
+                      <span className="leading-none text-silver-dim/50 light:text-museum-ink-dim/50 group-hover/btn:text-silver-dim light:group-hover/btn:text-museum-ink-dim group-hover/btn:translate-x-0.5 transition-all duration-300">→</span>
                     </button>
                   </motion.div>
                 </motion.form>
