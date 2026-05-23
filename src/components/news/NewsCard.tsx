@@ -38,7 +38,7 @@ export function NewsCard({ news, lang }: NewsCardProps) {
   const inner = (
     <div className="group flex items-start gap-3 md:gap-5 py-2.5 -ml-1 pl-5 rounded-sm transition-colors duration-300 hover:bg-silver-dim/[0.02] light:hover:bg-museum-ink-dim/[0.02]">
       {/* Lead image — smaller on mobile */}
-      <div className={`relative w-[100px] h-[60px] md:w-40 md:h-24 shrink-0 overflow-hidden ${thumbnail ? 'border border-silver-dim/12 light:border-museum-ink-dim/8' : ''}`}>
+      <div className={`relative w-[100px] h-[60px] md:w-40 md:h-24 shrink-0 overflow-hidden mt-0.5 md:mt-0 ${thumbnail ? 'border border-silver-dim/12 light:border-museum-ink-dim/8' : ''}`}>
         {thumbnail && (
           <Image
             src={thumbnail}
