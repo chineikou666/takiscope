@@ -251,7 +251,10 @@ export function Header() {
     'light:text-museum-ink-dim/80 px-3 mb-2 pb-2 border-b border-silver-dim/10 light:border-museum-ink-dim/8';
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-darkroom-black/80 backdrop-blur-sm border-b border-silver-dim/12 light:bg-museum-white/90 light:border-museum-ink-dim/12">
+    <header
+      className="fixed top-0 left-0 right-0 z-50 bg-darkroom-black/80 backdrop-blur-sm border-b border-silver-dim/12 light:bg-museum-white/90 light:border-museum-ink-dim/12"
+      style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
+    >
       <div className="flex items-center justify-between px-[3vw] py-4">
         {/* Logo */}
         <Link href={`/${lang}`} className="group shrink-0">
@@ -607,12 +610,14 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.3, 0, 0.15, 1] }}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-start pt-24 gap-5 overflow-y-auto bg-darkroom-black/98 light:bg-museum-white/98 pb-16"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-start gap-5 overflow-y-auto bg-darkroom-black/98 light:bg-museum-white/98 pb-16"
+            style={{ paddingTop: 'calc(96px + env(safe-area-inset-top, 0px))' }}
             onClick={(e) => { if (e.target === e.currentTarget) { setMenuOpen(false); setMobileExpanded(null); } }}
           >
             <button
               onClick={() => { setMenuOpen(false); setMobileExpanded(null); }}
-              className="absolute top-6 right-[3vw] font-mono text-xs tracking-[0.2em] text-silver-dim transition-colors duration-200 hover:text-silver-white light:text-museum-ink-dim light:hover:text-museum-ink"
+              className="absolute right-[3vw] font-mono text-xs tracking-[0.2em] text-silver-dim transition-colors duration-200 hover:text-silver-white light:text-museum-ink-dim light:hover:text-museum-ink"
+              style={{ top: 'calc(24px + env(safe-area-inset-top, 0px))' }}
               aria-label={dict.common.close}
             >
               ✕
@@ -633,15 +638,24 @@ export function Header() {
                     transition={{ delay: i * 0.08, duration: 0.5, ease: [0.3, 0, 0.15, 1] }}
                     className="flex flex-col items-center"
                   >
-                    <button
-                      onClick={() => setMobileExpanded(expanded ? null : item.key as 'works' | 'texts' | 'news')}
-                      className="flex items-center gap-2 font-sans text-2xl tracking-[0.2em] text-silver-white light:text-museum-ink"
-                    >
-                      {dict.nav[item.key as keyof typeof dict.nav]}
-                      <span className={`font-mono text-base transition-colors duration-200 ${expanded ? 'text-silver-white light:text-museum-ink' : 'text-silver-dim light:text-museum-ink-dim'}`}>
-                        {expanded ? '−' : '+'}
-                      </span>
-                    </button>
+                    <div className="flex items-center gap-3">
+                      <Link
+                        href={href}
+                        onClick={() => { setMenuOpen(false); setMobileExpanded(null); }}
+                        className="font-sans text-2xl tracking-[0.2em] text-silver-white light:text-museum-ink"
+                      >
+                        {dict.nav[item.key as keyof typeof dict.nav]}
+                      </Link>
+                      <button
+                        onClick={() => setMobileExpanded(expanded ? null : item.key as 'works' | 'texts' | 'news')}
+                        className="flex items-center justify-center w-7 h-7 rounded-full border border-silver-dim/20 light:border-museum-ink-dim/20 text-silver-dim light:text-museum-ink-dim hover:text-silver-white light:hover:text-museum-ink hover:border-silver-dim/40 light:hover:border-museum-ink-dim/40 transition-colors duration-200"
+                        aria-label={expanded ? 'Close filters' : 'Open filters'}
+                      >
+                        <span className="font-mono text-sm leading-none">
+                          {expanded ? '−' : '+'}
+                        </span>
+                      </button>
+                    </div>
 
                     <AnimatePresence>
                       {expanded && (

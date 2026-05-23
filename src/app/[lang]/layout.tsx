@@ -11,6 +11,7 @@ import { ThemeProvider } from '@/components/ui/ThemeProvider';
 import { CustomCursor } from '@/components/cursor/CustomCursor';
 import { BackToTop } from '@/components/ui/BackToTop';
 import { PageTransition } from '@/components/layout/PageTransition';
+import { Analytics } from '@vercel/analytics/next';
 import '../globals.css';
 
 const notoSansJP = Noto_Sans_JP({
@@ -71,9 +72,11 @@ export default async function RootLayout({
     <html
       lang={lang}
       className={`${notoSansJP.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      style={{ paddingTop: 'env(safe-area-inset-top, 0px)' } as React.CSSProperties}
       suppressHydrationWarning
     >
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className="min-h-screen font-sans antialiased">
@@ -96,6 +99,7 @@ export default async function RootLayout({
               <ConditionalFooter />
             </div>
           </I18nProvider>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
