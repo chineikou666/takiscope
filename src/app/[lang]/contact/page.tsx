@@ -124,7 +124,7 @@ function ContactClient() {
                   <motion.div variants={formItem} transition={{ duration: 0.7, ease: [0.3, 0, 0.15, 1] }} className="flex justify-end pt-1">
                     <button
                       type="submit"
-                      className="group/btn inline-flex items-center gap-3 px-6 py-3 border border-silver-dim/35 light:border-museum-ink-dim/45 bg-transparent hover:border-silver-dim/50 light:hover:border-museum-ink-dim/60 font-mono text-sm tracking-[0.15em] text-silver-dim hover:text-silver-white light:text-museum-ink light:hover:text-museum-ink transition-all duration-300"
+                      className="group/btn inline-flex items-center justify-center gap-3 px-6 py-3 border border-silver-dim/35 light:border-museum-ink-dim/45 bg-transparent hover:border-silver-dim/50 light:hover:border-museum-ink-dim/60 font-mono text-sm leading-none tracking-[0.15em] text-silver-dim hover:text-silver-white light:text-museum-ink light:hover:text-museum-ink transition-all duration-300"
                     >
                       {t.send}
                       <span className="text-silver-dim/50 group-hover/btn:text-silver-dim group-hover/btn:translate-x-0.5 transition-all duration-300">→</span>
