@@ -36,27 +36,27 @@ export function NewsCard({ news, lang }: NewsCardProps) {
   const thumbnail = getThumbnail(news);
 
   const inner = (
-    <div className="group flex items-start gap-5 py-2.5 -ml-1 pl-5 rounded-sm transition-colors duration-300 hover:bg-silver-dim/[0.02] light:hover:bg-museum-ink-dim/[0.02]">
-      {/* Lead image — always reserve w-40 h-24 for alignment */}
-      <div className={`relative w-40 h-24 shrink-0 overflow-hidden ${thumbnail ? 'border border-silver-dim/12 light:border-museum-ink-dim/8' : ''}`}>
+    <div className="group flex items-start gap-3 md:gap-5 py-2.5 -ml-1 pl-5 rounded-sm transition-colors duration-300 hover:bg-silver-dim/[0.02] light:hover:bg-museum-ink-dim/[0.02]">
+      {/* Lead image — smaller on mobile */}
+      <div className={`relative w-[100px] h-[60px] md:w-40 md:h-24 shrink-0 overflow-hidden ${thumbnail ? 'border border-silver-dim/12 light:border-museum-ink-dim/8' : ''}`}>
         {thumbnail && (
           <Image
             src={thumbnail}
             alt={title}
             fill
             className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-            sizes="160px"
+            sizes="(max-width: 768px) 100px, 160px"
           />
         )}
       </div>
 
-      {/* Date */}
-      <span className="shrink-0 font-mono text-xs tracking-[0.1em] text-silver-dim/60 light:text-museum-ink-dim/60 mt-[1px] w-14 text-right">
-        {dateStr}
-      </span>
-
-      {/* Title + excerpt */}
+      {/* Content */}
       <div className="min-w-0 flex-1">
+        {/* Mobile date — shown above title */}
+        <span className="md:hidden font-mono text-[10px] tracking-[0.1em] text-silver-dim/50 light:text-museum-ink-dim/50">
+          {dateStr}
+        </span>
+
         <span className="font-sans text-sm tracking-[0.03em] leading-snug text-silver-white light:text-museum-ink group-hover:text-silver-mid light:group-hover:text-museum-ink-mid transition-colors duration-300">
           {title}
         </span>
@@ -66,6 +66,11 @@ export function NewsCard({ news, lang }: NewsCardProps) {
           </p>
         )}
       </div>
+
+      {/* Desktop date — hidden on mobile */}
+      <span className="hidden md:inline shrink-0 font-mono text-xs tracking-[0.1em] text-silver-dim/60 light:text-museum-ink-dim/60 mt-[1px] w-14 text-right">
+        {dateStr}
+      </span>
 
       {/* Arrow on hover */}
       <span className="shrink-0 font-mono text-[10px] text-silver-dim/30 light:text-museum-ink-dim/30 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300 mt-[1px]">

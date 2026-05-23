@@ -76,7 +76,7 @@ export function NewsClient({ lang, dict, selectedYear }: NewsClientProps) {
                 </div>
 
                 {/* Entries */}
-                <div className="relative pl-10">
+                <div className="relative pl-8 md:pl-10">
                   {/* Timeline spine */}
                   <div className="absolute left-[7px] top-2 bottom-2 w-px bg-silver-dim/12 light:bg-museum-ink-dim/8" />
 
@@ -97,7 +97,7 @@ export function NewsClient({ lang, dict, selectedYear }: NewsClientProps) {
                         className="relative"
                       >
                         {/* Dot on timeline spine */}
-                        <span className="absolute left-[-27px] top-[10px] w-[7px] h-[7px] rounded-full border border-silver-dim/25 light:border-museum-ink-dim/20 bg-darkroom-black light:bg-museum-white" />
+                        <span className="absolute left-[-19px] md:left-[-27px] top-[10px] w-[7px] h-[7px] rounded-full border border-silver-dim/25 light:border-museum-ink-dim/20 bg-darkroom-black light:bg-museum-white" />
 
                         <NewsCard
                           news={news}
